@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form</title>
+</head>
+<body>
+    <h1>Add Job Application</h1>
+    <form action="/add" method="post">
+        <label for="company">Company:</label>
+        <input type="text" id="company" name="company" required><br><br>
+
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" required><br><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" ><br><br>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="Applied">Applied</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+        </select><br><br>
+
+        <input type="submit" value="Add Application">
+    </form>
+</body>
+</html>
