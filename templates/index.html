@@ -15,16 +15,22 @@
                 <th>Role</th>
                 <th>Date Applied</th>
                 <th>Status</th>
+                <th>Actions</th>
+
             </tr>
         </thead>
         <tbody>
             {% for job in jobs %}
             <tr>
-                <td>{{ job.id }}</td>
+                <td>{{ loop.index }}</td>
                 <td>{{ job.company }}</td>
                 <td>{{ job.role }}</td>
-                <td>{{ job.date_applied.strftime('%Y-%m-%d') if job.date_applied else 'N/A' }}</td>
+                <td>{{ job.date_applied.strftime('%Y-%m-%d')}}</td>
                 <td>{{ job.status }}</td>
+                <td>
+                    <a href="/delete/{{ job.id }}">Delete</a>
+                    <a href="/edit/{{ job.id }}">Edit</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

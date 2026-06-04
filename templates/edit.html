@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT DOCUMENT</title>
+</head>
+<body>
+    <form action="/edit/{{ job_to_edit.id }}" method="POST">
+        <label for="company">Company:</label>
+        <input type="text" id="company" name="company" value="{{ job_to_edit.company }}" required>
+        <br>
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" value="{{ job_to_edit.role }}" required>
+        <br>
+        <label for="date">Date Applied:</label>
+        <input type="date" id="date" name="date" value="{{ job_to_edit.date_applied.strftime('%Y-%m-%d') }}" required>
+        <br>
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="Applied" {% if job_to_edit.status == "Applied" %} selected{% endif %}>Applied</option>
+            <option value="Approved" {% if job_to_edit.status == "Approved" %} selected{% endif %}>Approved</option>
+            <option value="Rejected" {% if job_to_edit.status == "Rejected" %} selected{% endif %}>Rejected</option>
+            
+        </select>
+        <br>
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>
