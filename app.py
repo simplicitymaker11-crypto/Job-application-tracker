@@ -16,9 +16,7 @@ class Job(db.Model):
 
     def __repr__(self):
         return f'<Job {self.company} - {self.role}>' 
-       
-
-
+   
 
 
 @app.route('/')
@@ -72,7 +70,15 @@ def edit(id):
     
     return render_template('edit.html', job_to_edit=job)
 
+@app.route('/contact')
+def contact():
+    
+    return render_template('contact.html')
 
+@app.route('/about')
+def about():
+    
+    return render_template('about.html')
 
 if __name__  == '__main__':
     app.run(debug=True)

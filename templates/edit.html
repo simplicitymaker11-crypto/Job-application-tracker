@@ -4,27 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDIT DOCUMENT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <form action="/edit/{{ job_to_edit.id }}" method="POST">
-        <label for="company">Company:</label>
+    
+    <h1>Edit Job Application</h1>
+    <div class="container">
+    <form action="/edit/{{ job_to_edit.id }}" class="row g-3" method="POST">
+        
+        <div id="item1">
+        <label for="company">Company </label>
         <input type="text" id="company" name="company" value="{{ job_to_edit.company }}" required>
-        <br>
-        <label for="role">Role:</label>
+        <br><br>
+        </div>
+
+        <div id="item2">
+        <label for="role">Role </label>
         <input type="text" id="role" name="role" value="{{ job_to_edit.role }}" required>
-        <br>
-        <label for="date">Date Applied:</label>
+        <br><br>
+        </div>
+
+        <div id="item3">
+        <label for="date">Date </label>
         <input type="date" id="date" name="date" value="{{ job_to_edit.date_applied.strftime('%Y-%m-%d') }}" required>
-        <br>
-        <label for="status">Status:</label>
+        <br><br>
+        </div>
+
+        <div id="item4">
+        <label for="status">Status </label>
         <select id="status" name="status" required>
-            <option value="Applied" {% if job_to_edit.status == "Applied" %} selected{% endif %}>Applied</option>
-            <option value="Approved" {% if job_to_edit.status == "Approved" %} selected{% endif %}>Approved</option>
-            <option value="Rejected" {% if job_to_edit.status == "Rejected" %} selected{% endif %}>Rejected</option>
+            <option value="Applied" {%if job_to_edit.status == "Applied" %} selected{% endif %} class="applied">Applied</option>
+            <option value="Approved" {% if job_to_edit.status == "Approved" %} selected{% endif %} class="approved">Approved</option>
+            <option value="Rejected" {% if job_to_edit.status == "Rejected" %} selected{% endif %} class="rejected">Rejected</option>
+            <option value="Pending"  {%if job_to_edit.status == "Pending" %} selected{% endif %} class="pending">Pending</option>
             
         </select>
-        <br>
+        <br><br>
+        </div>
+        <div id="item5">
         <button type="submit">Save Changes</button>
+        </div>
     </form>
+</div>
+
 </body>
 </html>

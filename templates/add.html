@@ -4,27 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
+    
+
 <body>
     <h1>Add Job Application</h1>
-    <form action="/add" method="post">
-        <label for="company">Company:</label>
+    <div class="container">
+    <form action="/add"  method="post">
+        <div id="item1">
+        <label for="company">Company</label>
         <input type="text" id="company" name="company" required><br><br>
-
-        <label for="role">Role:</label>
+            </div>
+        
+        <div id="item2"> 
+        <label for="role">Role</label>
         <input type="text" id="role" name="role" required><br><br>
+        </div>
 
-        <label for="date">Date:</label>
+        <div id="item3">
+        <label for="date">Date</label>
         <input type="date" id="date" name="date" ><br><br>
+        </div>
 
-        <label for="status">Status:</label>
+        <div id="item4">
+        <label for="status">Status </label>
         <select id="status" name="status" required>
-            <option value="Applied">Applied</option>
-            <option value="Approved">Approved</option>
-            <option value="Rejected">Rejected</option>
+            <option value="Applied" class="applied">Applied</option>
+            <option value="Approved" class="approved">Approved</option>
+            <option value="Rejected" class="rejected">Rejected</option>
+            <option value="Pending" class="pending">Pending</option>
         </select><br><br>
+        </div>
 
-        <input type="submit" value="Add Application">
-    </form>
+        <div id="item5">
+        <button type="submit" >Add Aplication </button>
+        </div>
+
+    </form> 
+</div>
 </body>
 </html>
