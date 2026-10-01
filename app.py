@@ -44,16 +44,15 @@ def add():
     
     return render_template('add.html')
     
-@app.route('/delete/<int:id>')
+@app.route('/delete/<int:id>', methods=['DELETE'])
 def delete(id):
     job=Job.query.get_or_404(id)
     db.session.delete(job)
     db.session.commit()
-    return redirect('/')
+    return {"message": "Job deleted successfully"}, 200
 
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
-    
     job=Job.query.get_or_404(id)
     if request.method == "POST":
         
