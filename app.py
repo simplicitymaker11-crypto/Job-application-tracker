@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request, redirect
+from flask import Flask, render_template,request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
 
@@ -69,6 +69,18 @@ def edit(id):
     
     return render_template('edit.html', job_to_edit=job)
 
+@app.route('/search')
+def search():
+     query=request.args.get("q","").strip()
+     if not query:
+            
+            return redirect(url_for("home") )
+    
+     jobs=Job.query.filter(db.or_(Job.company.ilike(f"%{query}%"),
+                                                       Job.role.ilike(f"%{query}%"),Job.status.ilike(f"%{query}%"))).all()
+    
+     return render_template ("index.html", jobs=jobs)
+ 
 @app.route('/contact')
 def contact():
     
@@ -76,6 +88,10 @@ def contact():
 
 @app.route('/about')
 def about():
+
+   
+
+    
     
     return render_template('about.html')
 

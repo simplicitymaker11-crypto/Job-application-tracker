@@ -10,11 +10,12 @@
 <body class="container">
    
     <div class="header">
-    <a href="/">HOME</a>
+    <a href="{{ url_for('home') }}">HOME</a>
     <a href="/about">ABOUT US</a>
     <a href="/contact">CONTACT</a>
-    
-    <input class="search" type="text">
+    <form action="{{url_for('search')}}" method="GET">
+    <input id="search" type="text"  name="q" placeholder="search company or position">
+    </form>
     <div class="image">
     <img src="C:/Users/ALHADI/Downloads/4x/al-ubaid Asset 2@4x-8.png" alt="image not found"></div>
     </div>
@@ -23,7 +24,7 @@
     
     <table>
         <thead>
-            <tr>
+            <tr >
                 <th>ID   </th>
                 <th>Company</th>
                 <th>Role</th>
@@ -37,7 +38,7 @@
         </thead>
         <tbody>
             {% for job in jobs %}
-            <tr>
+            <tr id= 'item-{{job.id}}'>
                 <td>{{ job.id }}</td>
                 <td>{{ job.company }}</td>
                 <td>{{ job.role }}</td>
