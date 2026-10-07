@@ -9,19 +9,9 @@
 </head>
 <body class="container">
    
-    <div class="header">
-    <a href="{{ url_for('home') }}">HOME</a>
-    <a href="/about">ABOUT US</a>
-    <a href="/contact">CONTACT</a>
-    <form action="{{url_for('search')}}" method="GET">
-    <input id="search" type="text"  name="q" placeholder="search company or position">
-    </form>
-    <div class="image">
-    <img src="C:/Users/ALHADI/Downloads/4x/al-ubaid Asset 2@4x-8.png" alt="image not found"></div>
-    </div>
-   
-    <h1 >Job Applications Tracker</h1>
     
+    {% include "_header.html" %}
+    <h1 >Job Applications Tracker</h1>
     <table>
         <thead>
             <tr >
@@ -30,20 +20,19 @@
                 <th>Role</th>
                 <th>Date</th>
                 <th>Status</th>
-                <div id="actions">
-                <th >Actions</th>
-                </div>
-
-            </tr>
+               
+                <th id="actions" >Actions</th>
+                </tr>
         </thead>
         <tbody>
-            {% for job in jobs %}
+             {% for job in jobs %}
             <tr id= 'item-{{job.id}}'>
+               
                 <td>{{ job.id }}</td>
                 <td>{{ job.company }}</td>
                 <td>{{ job.role }}</td>
                 <td>{{ job.date_applied.strftime('%Y-%m-%d')}}</td>
-                <td>{{ job.status }}</td>
+                <td class="status">{{ job.status }}</td>
                 <td>
                     <!-- The browser sees this as a harmless button that does nothing on its own -->
                 <button type="button" onclick="deleteItem('{{ job.id }}')">Delete</button>
@@ -55,12 +44,14 @@
             </tr>
             
             {% endfor %}
-            </table>
             </tbody>
+            </table>
+            
 
         <div class="btn">                                
         <a href="/add">Add</a>
-            <script>
+
+<script>
 
 
 async function deleteItem(id) {

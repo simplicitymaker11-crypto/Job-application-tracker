@@ -79,7 +79,7 @@ def search():
      jobs=Job.query.filter(db.or_(Job.company.ilike(f"%{query}%"),
                                                        Job.role.ilike(f"%{query}%"),Job.status.ilike(f"%{query}%"))).all()
     
-     return render_template ("index.html", jobs=jobs)
+     return render_template ("index.html", jobs=jobs, search_query=query)
  
 @app.route('/contact')
 def contact():

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    
+    {% include "_header.html" %}
     <h1>Edit Job Application</h1>
     <div class="container">
     <form action="/edit/{{ job_to_edit.id }}" class="row g-3" method="POST">
