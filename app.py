@@ -1,11 +1,15 @@
 from flask import Flask, render_template,request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///jobapp.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL" ,'sqlite:///jobapp.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db=SQLAlchemy(app)
+
+
 
 class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,7 +21,8 @@ class Job(db.Model):
     def __repr__(self):
         return f'<Job {self.company} - {self.role}>' 
    
-
+with app.app_context():
+    db.create_all()
 
 @app.route('/')
 def home():
@@ -96,4 +101,4 @@ def about():
     return render_template('about.html')
 
 if __name__  == '__main__':
-    app.run(debug=True)
+    app.run(debug=os.environ.get("FLASK_DEBUG")=="1")
