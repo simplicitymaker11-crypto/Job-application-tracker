@@ -1,13 +1,28 @@
 
     <div class="header">
-    <a href="{{ url_for('home') }}">HOME</a>
-    <a href="/about">ABOUT US</a>
-    <a href="/contact">CONTACT</a>
-    <form action="{{url_for('search')}}" method="GET">
-    <input id="search" type="text"  name="q" placeholder="search company or position" value='{{ search_query }}'>
-    </form>
-    <div class="image">
-    <img src="C:/Users/ALHADI/Downloads/4x/al-ubaid Asset 2@4x-8.png" alt="image not found"></div>
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About us</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+        <form class="search-form" action="{{ url_for('search') }}" method="GET" role="search">
+            <input
+                id="search"
+                type="search"
+                name="q"
+                placeholder="Search companies or roles"
+                value="{{ search_query|default('') }}"
+                aria-label="Search companies or roles">
+            <button type="submit" aria-label="Search">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <circle cx="10.8" cy="10.8" r="6.3"></circle>
+                    <path d="m15.5 15.5 4.2 4.2"></path>
+                </svg>
+            </button>
+        </form>
+        <div class="image">
+            <img src="static/logoAsset 6@4x-8.png" alt="Job Application Tracker logo">
+        </div>
     </div>
    
     

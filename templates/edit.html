@@ -6,11 +6,11 @@
     <title>EDIT DOCUMENT</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
+<body class="container">
     {% include "_header.html" %}
     <h1>Edit Job Application</h1>
-    <div class="container">
-    <form action="/edit/{{ job_to_edit.id }}" class="row g-3" method="POST">
+    
+    <form action="/edit/{{ job_to_edit.id }}" class="job_form_input" method="POST">
         
         <div id="item1">
         <label for="company">Company </label>
@@ -41,11 +41,11 @@
         </select>
         <br><br>
         </div>
-        <div class="btn">
-        <button type="submit">Save Changes</button>
-        </div>
+        
+        <button class="btn" type="submit">Save Changes</button>
+        
     </form>
-</div>
+
 
 </body>
 </html>

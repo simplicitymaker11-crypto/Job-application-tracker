@@ -12,44 +12,41 @@
     
     {% include "_header.html" %}
     <h1 >Job Applications Tracker</h1>
-    <table>
-        <thead>
-            <tr >
-                <th>ID   </th>
-                <th>Company</th>
-                <th>Role</th>
-                <th>Date</th>
-                <th>Status</th>
-               
-                <th id="actions" >Actions</th>
+    <div class="table-wrapper">
+        <table class="records-table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
                 </tr>
-        </thead>
-        <tbody>
-             {% for job in jobs %}
-            <tr id= 'item-{{job.id}}'>
-               
-                <td>{{ job.id }}</td>
-                <td>{{ job.company }}</td>
-                <td>{{ job.role }}</td>
-                <td>{{ job.date_applied.strftime('%Y-%m-%d')}}</td>
-                <td class="status">{{ job.status }}</td>
-                <td>
-                    <!-- The browser sees this as a harmless button that does nothing on its own -->
-                <button type="button" onclick="deleteItem('{{ job.id }}')">Delete</button>
-
-
-
-                    <a href="/edit/{{ job.id }}">Edit</a>
-                </td>
-            </tr>
-            
-            {% endfor %}
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr id="item-{{ job.id }}">
+                    <td>{{ job.id }}</td>
+                    <td>{{ job.company }}</td>
+                    <td>{{ job.role }}</td>
+                    <td>{{ job.date_applied.strftime('%Y-%m-%d') }}</td>
+                    <td class="status {{ job.status|lower }}">{{ job.status }}</td>
+                    <td class="record-actions">
+                        <button class="row-action delete-action" type="button" onclick="deleteItem('{{ job.id }}')">Delete</button>
+                        <a class="row-action edit-action" href="/edit/{{ job.id }}">Edit</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td class="empty-state" colspan="6">No job applications to display.</td>
+                </tr>
+                {% endfor %}
             </tbody>
-            </table>
-            
+        </table>
+    </div>
 
-        <div class="btn">                                
-        <a href="/add">Add</a>
+    <a class="btn add_btn" href="/add">Add</a>
 
 <script>
 

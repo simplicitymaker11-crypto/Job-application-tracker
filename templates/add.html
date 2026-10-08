@@ -5,28 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Form</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
 </head>
 
     
 
-<body>
+<body class="container">
     {% include "_header.html" %}
     <h1>Add Job Application</h1>
-    <div class="container">
-    <form action="/add"  method="post">
+    
+    <form action="/add"  method="post"      class="job_form_input">
         <div id="item1">
         <label for="company">Company</label>
-        <input type="text" id="company" name="company" required><br><br>
-            </div>
+        <input type="text" id="company" name="company" required>
+        </div>
         
         <div id="item2"> 
         <label for="role">Role</label>
-        <input type="text" id="role" name="role" required><br><br>
+        <input type="text" id="role" name="role" required>
         </div>
 
         <div id="item3">
         <label for="date">Date</label>
-        <input type="date" id="date" name="date" ><br><br>
+        <input type="date" id="date" name="date">
         </div>
 
         <div id="item4">
@@ -36,14 +39,14 @@
             <option value="Approved" class="approved">Approved</option>
             <option value="Rejected" class="rejected">Rejected</option>
             <option value="Pending" class="pending">Pending</option>
-        </select><br><br>
+        </select>
         </div>
 
-        <div class="btn2">
-        <button type="submit" >Add Aplication </button>
-        </div>
+        
+        <button class="btn add-submit" type="submit">Add Application</button>
+        
 
     </form> 
-</div>
+
 </body>
 </html>
