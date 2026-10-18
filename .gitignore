@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Local databases (your SQLite copy must never go to GitHub or Vercel)
+*.db
+*.sqlite
+*.sqlite3
+
+# Vercel CLI folder (created by `vercel link` / `vercel dev`)
+.vercel
+
+# Secrets files (connection strings and keys)
+.env.*
