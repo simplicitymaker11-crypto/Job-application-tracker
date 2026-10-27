@@ -28,6 +28,9 @@ class Job(db.Model):
     date_applied = db.Column(db.DateTime, nullable=False)
     status = db.Column(db.String(20), nullable=False)
 
+    with app.app_context():
+            db.create_all() 
+            
     def __repr__(self):
         return f'<Job {self.company} - {self.role}>' 
    
@@ -110,8 +113,7 @@ def about():
     return render_template('about.html')
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()         
+            
     app.run(debug=os.environ.get("FLASK_DEBUG") == "1")
 
   
