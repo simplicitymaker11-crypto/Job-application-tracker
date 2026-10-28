@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
+from sqlalchemy import inspect 
 import os
 
 app = Flask(__name__)
@@ -28,13 +29,15 @@ class Job(db.Model):
     date_applied = db.Column(db.DateTime, nullable=False)
     status = db.Column(db.String(20), nullable=False)
 
-    with app.app_context():
-            db.create_all() 
-            
+     
+
     def __repr__(self):
         return f'<Job {self.company} - {self.role}>' 
    
-
+with app.app_context():
+            print("DB host:", db.engine.url.host)
+            db.create_all()
+            print("Tables:", inspect(db.engine).get_table_names())
 
 @app.route('/')
 def home():
