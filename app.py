@@ -35,9 +35,9 @@ class Job(db.Model):
         return f'<Job {self.company} - {self.role}>' 
    
 with app.app_context():
-            print("DB host:", db.engine.url.host)
+           
             db.create_all()
-            print("Tables:", inspect(db.engine).get_table_names())
+          
 
 @app.route('/')
 def home():
