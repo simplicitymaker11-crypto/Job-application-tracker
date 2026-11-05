@@ -29,10 +29,6 @@ Requires Python 3.14.4.
 ```
    python -m pip install -r requirements.txt
 ```
-4. Create the database tables (first run only):
-```
-   python -c "from app import app, db; app.app_context().push(); db.create_all()"
-```
 5. Start the app:
 ```
    python app.py

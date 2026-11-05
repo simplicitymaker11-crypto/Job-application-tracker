@@ -35,7 +35,6 @@ class Job(db.Model):
         return f'<Job {self.company} - {self.role}>' 
    
 with app.app_context():
-           
             db.create_all()
           
 

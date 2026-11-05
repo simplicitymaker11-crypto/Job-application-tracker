@@ -1,20 +1,4 @@
-a{
-    
-    
-    text-decoration: none;
-    color: #888888;
-    border-radius: 5px;
-    margin: 8px;
-}
 
-a:hover{
-
-
-  background-color: #4e4e4e;
-  color: #e0e0e0;
-  transition: 0.3s ease;
-
-}
 
 body{
    background-color: #f3f6fa;
@@ -60,9 +44,10 @@ h1{
 }
 
 .header-nav a {
+    text-decoration: none;
     margin: 0;
     padding: 10px 12px;
-    color: #294766;
+    color: #888888;;
     font-size: 14px;
     font-weight: 600;
     white-space: nowrap;
@@ -147,8 +132,8 @@ option.applied {
     
     font-family: Plus Jakarta Sans, sans-serif;
     color: rgb(63, 105, 244);
-}
-.status.approved,
+}                                   
+.status.approved,                                                                                               
 option.approved {
     
    
@@ -171,6 +156,7 @@ option.pending {
 
 
 .table-wrapper {
+
     width: 100%;
     margin-top: 24px;
     overflow-x: auto;
@@ -182,14 +168,14 @@ option.pending {
 
 .records-table {
     width: 100%;
-    border-collapse: collapse;
-    text-align: left;
+   
+    text-align: center;
 }
 
 .records-table th,
 .records-table td {
     padding: 14px 18px;
-    border-bottom: 1px solid #ededed;
+    border-bottom: 1px solid#1111
 }
 
 .records-table th {
@@ -336,8 +322,8 @@ option.pending {
     padding: 12px 22px;
     color: #fff;
     background-color: #294766;
-    border: 1px solid #294766;
-    border-radius: 8px;
+    
+    border-radius: 5px;
     font: inherit;
     font-weight: 600;
     text-decoration: none;
@@ -346,9 +332,11 @@ option.pending {
 }
 
 .btn:hover {
-    color: #fff;
-    background-color: #1d354f;
-    border-color: #1d354f;
+    color: #3a3a3a;
+    background-color: #98badf;
+    border-color: #3a3a3a;
+     transition: 0.3s ease;
+     transform: scale(1.05) translateX(-2px);
 }
 
 .btn:focus-visible {
